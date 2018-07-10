@@ -15,6 +15,10 @@ export default class GameForm extends Component {
     this.setState({ genre });
   }
 
+  handleChange = (event) => {
+    this.setState({name: event.target.value}, () => {console.log(this.state.name)})
+  }
+
   render() {
     return (
       <div className="gameform">
@@ -25,6 +29,7 @@ export default class GameForm extends Component {
               type="text"
               name="name"
               placeholder="Filter board games by name"
+              onChange={this.handleChange}
             />
           </label>
           <GenreDropdown
@@ -32,7 +37,7 @@ export default class GameForm extends Component {
             currentGenre={this.state.genre}
             handleDropdown={this.selectGenre}
           />
-          <input type="submit" value="Add Game" />
+        <input type="submit" value="Add Game" onClick={(event) => {this.props.handleSubmit(event, this.state)}}/>
         </form>
       </div>
     )

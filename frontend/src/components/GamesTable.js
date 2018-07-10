@@ -1,6 +1,17 @@
 import React from 'react';
 
 const GamesTable = (props) => {
+  const mapGames = () => {
+    return props.games.map((game) => {
+      return (
+        <tr>
+          <td>{game.name}</td>
+          <td>{game.genre.name}</td>
+        </tr>
+      )
+    })
+  }
+
   return (
     <table className="games">
       <tbody>
@@ -13,6 +24,7 @@ const GamesTable = (props) => {
           </th>
         </tr>
       </tbody>
+      {mapGames()}
     </table>
   )
 }
